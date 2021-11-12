@@ -33,7 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-#有上線的時候才會使用到，可以自己新增一個 group
+#有上線的時候會使用到，可以自己新增一個 group
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
