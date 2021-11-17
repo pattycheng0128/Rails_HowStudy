@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  #暫寫
+  def sign_out
+    
+  end
+
   def account_verify
     # 終端機會印出 token 的資訊
     # puts params

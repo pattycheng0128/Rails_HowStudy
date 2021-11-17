@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get "/sign_in", to: "users#sign_in"
   post "/account_verify", to: "users#account_verify"
   post "/sign_in/check", to: "users#check"
+  get "/sign_out", to: "users#sign_out"
 end

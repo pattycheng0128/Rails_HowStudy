@@ -31,7 +31,7 @@ class User < ApplicationRecord
     # self 也是代表自己，和類別方法無關
     #password = Digest::SHA1.hexdigest(self.password) #不會加密，會直接輸出密碼
     # self.password = Digest::SHA1.hexdigest(password)
-    salted_password = "xy#{self.password}hello"
+    salted_password = "xy#{password.reverse}hellohey"
     self.password = Digest::SHA1.hexdigest(salted_password)
   end
 
