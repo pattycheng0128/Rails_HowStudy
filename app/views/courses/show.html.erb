@@ -1,1 +1,10 @@
-<h1> 修改? </h1>
+<% if @course %>
+  <h1><%= @course.name %></h1>
+<ul>
+  <li>price: <%= @course.price %></li>
+  <li>intro: <%= @course.intro %></li>
+  <li>hour:  <%= @course.hour %></li>
+</ul>
+<% else %>
+  <h1>Not Found</h1>
+<% end %>
