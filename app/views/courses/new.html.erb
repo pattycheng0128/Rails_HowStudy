@@ -1,0 +1,31 @@
+<h1>新增課程</h1>
+
+<% if @course.errors.any? %>
+  <ul>
+  <%= @course.errors.full_messages.each do |msg|%>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @course) do |form| %>
+  <div class="fields">
+    <%= form.label :name, '名稱' %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="fields">
+    <%= form.label :price, '價錢' %>
+    <%= form.number_field :price %>
+  </div>
+  <div class="fields">
+    <%= form.label :intro, '簡介' %>
+    <%= form.text_field :intro %>
+  </div>
+  <div class="fields">
+    <%= form.label :hour, '時數' %>
+    <%= form.number_field :hour %>
+  </div>
+    <div class="actions">
+    <%= form.submit 'Create course'%>
+  </div>
+<% end %>

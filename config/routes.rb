@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  #課程
+  resources :courses
+
   # 練習用
   get "/", to: "pages#index"
   # root "pages#index"
