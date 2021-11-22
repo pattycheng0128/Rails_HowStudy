@@ -1,3 +1,5 @@
 <h1>新增課程</h1>
 
+<%# 餵一般的區域變數 course 才不會寫死內容, 
+從其他 view 取用這些結果，好處: 比較彈性 %>
 <%= render 'form', course: @course %>

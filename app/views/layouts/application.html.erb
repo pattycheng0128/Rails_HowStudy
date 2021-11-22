@@ -12,6 +12,9 @@
 
   <body>
     <%# 共用模板，將 body 讓給其它 html 頁面去顯示 %>
+    <%# 提示訊息 %>
+    <%= render "shared/navbar" %>
+    <%= flash[:notice] %>
     <%= yield %>
   </body>
 </html>

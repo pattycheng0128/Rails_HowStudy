@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   #課程
   resources :courses
 
-  # 練習用
-  get "/", to: "pages#index"
+  # 首頁轉到課程首頁
+  get "/", to: "courses#index"
   # root "pages#index"
   # 開一個新的 about
   get "/about", to: "pages#about"
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get "/sign_in", to: "users#sign_in"
   post "/account_verify", to: "users#account_verify"
   post "/sign_in/check", to: "users#check"
-  get "/sign_out", to: "users#sign_out"
+  delete "/sign_out", to: "users#sign_out"
 end

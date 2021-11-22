@@ -1,7 +1,8 @@
 <p>Hello!</p>
 
 <% if user_signed_in? %>
-  已登入<a href="/sign_out" >登出</a>
+  已登入<a href="/sign_out" >登出</a><br>
+  <a href="/courses">新增課程</a>
 <% else %>
   未登入<a href="/sign_in" >登入</a>
 <% end%>

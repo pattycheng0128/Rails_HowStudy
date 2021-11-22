@@ -4,9 +4,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  #暫寫
+  # 登出
   def sign_out
-    
+    session[:hahow] = nil
+    redirect_to courses_path, notice: '已登出'
   end
 
   def account_verify
