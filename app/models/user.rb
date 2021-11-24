@@ -2,7 +2,10 @@ require 'digest'
 
 class User < ApplicationRecord
 
-  has_many :course #要在 course.rb 加 belongs_to 才有關連
+  #要在 course.rb 加 belongs_to 才有關連
+  #has_one :course 只會撈到一筆資料
+  has_many :courses #會撈到多筆資料
+ 
   # 寫在 Model 裡面可以重複使用
   # validates(:username, {presence: ture})
   # validates_presence_of 是較舊的寫法

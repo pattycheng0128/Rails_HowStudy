@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # 登出
   def sign_out
-    session[:hahow] = nil
+    session[:hahow] = nil # 設定 nil session 才會清除
     redirect_to courses_path, notice: '已登出'
   end
 
