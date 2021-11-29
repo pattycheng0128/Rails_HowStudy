@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  #課程
-  resources :courses
+  #課程和 review 評論
+  resources :courses do
+    resources :reviews, only: [:create] # 建出 course_reviews_path, reviews#create
+  end
+  resources :reviews, only: [:destroy] # 建出 review_path, courses#destroy
 
   # 首頁轉到課程首頁
   get "/", to: "courses#index"

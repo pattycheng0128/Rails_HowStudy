@@ -1,10 +1,37 @@
-<% if @course %>
-  <h1><%= @course.name %></h1>
-<ul>
-  <li>price: <%= @course.price %></li>
-  <li>intro: <%= @course.intro %></li>
-  <li>hour:  <%= @course.hour %></li>
-</ul>
-<% else %>
-  <h1>Not Found</h1>
+<h1> <%= @course.name %></h1> 
+
+<%= form_for(@review, url: course_reviews_path(@course)) do |f| %>
+
+  <div class="field">
+    <%= f.label :rating, "Rating" %>
+    <%= f.select :rating, [1, 2, 3, 4, 5], include_black: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "Content" %>
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="action">
+    <%= f.submit %>
+  </div>
+
+  <h2>評論</h2>
+  <div class="reviews_container">
+    <% @reviews.each do |view| %>
+    <div class="reviews">
+      <section class="review">
+      星數:<%= "★" * view.rating %><%= "☆" * (5 - view.rating) %>
+    </section>
+    <header><%= view.title %></header>
+    <article><%= view.content %></article>
+    </div>
+    <% end %>
+  </div>
+
 <% end %>

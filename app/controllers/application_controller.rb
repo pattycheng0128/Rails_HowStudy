@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # include UserHelper
 
   # 只要所有 controller 發生這個錯誤，都會捕捉到這個錯誤，然後找 404 頁面渲染出來
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # 讓 view 可以使用
   helper_method :user_signed_in?, :current_user
@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
     # 在同一個畫面或 action，如果有人多次呼叫@current_user，就不會再抓一次目前的 user，像 cache的概念
     # memorization
     @current_user ||= User.find_by(id: session[:hahow])
+  end
+
+  # 如果沒登入，轉去登入頁面 - 使用者要先登入，才能新增課程
+  def authenticate!
+    # 用 session 寫法也 OK
+    if not user_signed_in?
+      redirect_to sign_in_path, notice:'請先登入頁面'
+    end
   end
 
 end

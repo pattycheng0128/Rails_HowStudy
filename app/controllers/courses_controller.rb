@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   # 除了 index 和 show 不需要確認登入的動作  
   before_action :find_course, only: [:show, :edit, :update, :destroy]
   #除了index和show頁面外，其它頁面登入都要確認
-  before_action :login?, except: [:index, :show]
+  before_action :authenticate!, except: [:index, :show]
 
   def index
     @courses = Course.all #撈出所有資料
@@ -30,6 +30,12 @@ class CoursesController < ApplicationController
   end
 
   def show
+    # 找到課程
+    @course =Course.find(params[:id])
+    # 新增 review 實體
+    @review = Review.new()
+    #代替 where，每個課程都有很多 reviews, lazy loading 不會印出來，沒用到不會印出來
+    @reviews = @course.reviews #要加資料新的在上面
   end
 
   def edit
@@ -59,7 +65,6 @@ class CoursesController < ApplicationController
   def find_course
     # 把課程資料撈出來
     # @course = Course.find_by(id:params[:id])
-    # begin rescue 還沒加
     #課程的使用者才能進去編輯
     @course = current_user.courses.find(params[:id])
 
@@ -70,11 +75,4 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:name, :price, :intro, :hour)
   end
 
-  # 如果沒登入，轉去登入頁面 - 使用者要先登入，才能新增課程
-  def login?
-    # 用 session 寫法也 OK
-    if not user_signed_in?
-      redirect_to sign_in_path, notice:'請先登入頁面'
-    end
-  end
 end
