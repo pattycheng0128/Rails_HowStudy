@@ -30,12 +30,12 @@ class CoursesController < ApplicationController
   end
 
   def show
-    # 找到課程
+    # 找到課程，給 view 的 course_reviews_path 使用
     @course =Course.find(params[:id])
     # 新增 review 實體
     @review = Review.new()
     #代替 where，每個課程都有很多 reviews, lazy loading 不會印出來，沒用到不會印出來
-    @reviews = @course.reviews #要加資料新的在上面
+    @reviews = @course.reviews.order(id: :desc) #透過資料庫做反向排序
   end
 
   def edit

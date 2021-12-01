@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  #註冊
   def sign_up
     @user = User.new
   end
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
     redirect_to courses_path, notice: '已登出'
   end
 
+  # 註冊後會做帳號確認
   def account_verify
     # 終端機會印出 token 的資訊
     # puts params

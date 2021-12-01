@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # include UserHelper
 
   # 只要所有 controller 發生這個錯誤，都會捕捉到這個錯誤，然後找 404 頁面渲染出來
-  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # 讓 view 可以使用
   helper_method :user_signed_in?, :current_user

@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   #課程和 review 評論
   resources :courses do
-    resources :reviews, only: [:create] # 建出 course_reviews_path, reviews#create
+    resources :reviews, only: [:create] # 建出 course_reviews_path, /courses/:course_id/reviews(.:format)
   end
-  resources :reviews, only: [:destroy] # 建出 review_path, courses#destroy
+  resources :reviews, only: [:destroy] # 建出 review_path, courses#destroy, /reviews/:id(.:format)
 
   # 首頁轉到課程首頁
   get "/", to: "courses#index"

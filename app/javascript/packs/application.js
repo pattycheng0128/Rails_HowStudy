@@ -11,3 +11,7 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// console.log("hi")
+import "stylesheets"
+// import "scripts"

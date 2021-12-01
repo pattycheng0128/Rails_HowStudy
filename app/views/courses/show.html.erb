@@ -1,17 +1,23 @@
-<h1> <%= @course.name %></h1> 
 
-<%= form_for(@review, url: course_reviews_path(@course)) do |f| %>
+<h1> 
+  <%= @course.name %>
+  <button id="like_btn">Like!</button>
+</h1> 
 
+<%# @course要帶入，不然不會知道是哪一門課程
+(@course =Course.find(params[:id])), remote:true(XHR,AJAX 非同步應用)，當 show controller 找不到相對應的網址時，會去找 views 下的 reviews 中的 js %>
+<%= form_for(@review, url: course_reviews_path(@course), remote:true) do |f| %>
+  <%# 幾顆星 %>
   <div class="field">
     <%= f.label :rating, "Rating" %>
     <%= f.select :rating, [1, 2, 3, 4, 5], include_black: true %>
   </div>
-
+  <%# 留言的標題 %>
   <div class="field">
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %>
   </div>
-
+  <%# 留言的內容 %>
   <div class="field">
     <%= f.label :content, "Content" %>
     <%= f.text_field :content %>
@@ -22,16 +28,8 @@
   </div>
 
   <h2>評論</h2>
-  <div class="reviews_container">
-    <% @reviews.each do |view| %>
-    <div class="reviews">
-      <section class="review">
-      星數:<%= "★" * view.rating %><%= "☆" * (5 - view.rating) %>
-    </section>
-    <header><%= view.title %></header>
-    <article><%= view.content %></article>
-    </div>
-    <% end %>
+  <%# 搬到 _reviews page，底下是簡寫 %>
+  <div class="review-container">
+    <%= render @reviews %>
   </div>
-
 <% end %>

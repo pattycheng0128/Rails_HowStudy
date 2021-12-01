@@ -5,6 +5,11 @@ class User < ApplicationRecord
   #要在 course.rb 加 belongs_to 才有關連
   #has_one :course 只會撈到一筆資料
   has_many :courses #會撈到多筆資料
+
+  #名字沒取好
+  #透過 through 和 :favor_courses 建立關聯
+  has_many :favor_courses
+  has_many :favorite_courses, through: :favor_courses, source: :course
  
   # 寫在 Model 裡面可以重複使用
   # validates(:username, {presence: ture})

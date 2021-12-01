@@ -1,14 +1,11 @@
+<%# 評論後按 create review時，當 controller 內的 create 沒被執行時，會執行這段 js, 注意 const 和 let 不能重複宣告兩次 %>
 var reviewContainer = document.querySelector('.review-container')
 
 var el = document.createElement('div')
-var reviewContent = `<section class="review">
-    星數：<%= "★" * @review.rating %><%= "☆" * (5 - @review.rating) %>
-    <header><%= @review.title %></header>
-    <article>
-      <%= @review.content %>
-    </article>
-  </section>
-`
+var reviewContent = `<%= render "review", review: @review %>`
 el.innerHTML = reviewContent
 
-reviewContainer.insertAdjacentElement("afterbegin", el)
+reviewContainer.insertAdjacentElement("afterbegin", el.firstChild)
+
+document.querySelector('#new_review').reset()
+<%# 送完評論後，內容要清掉 %>
