@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
     # 看 sqlite courses 資料表會多一個 user_id 欄位，會建立關聯
     # @course.user_id = current_user.id #使用者要登入後才允許資料進來
     # 目前的使用者會有很多課程
+    # 如果不是目前的 user ，create 一定會失敗，因為上面 before_action :authenticate!會確認如果不是使用者會被踢到登入頁面
     @course = current_user.courses.build(clean_params) #抵上面兩行
 
     if @course.save
@@ -31,11 +32,14 @@ class CoursesController < ApplicationController
 
   def show
     # 找到課程，給 view 的 course_reviews_path 使用
-    @course =Course.find(params[:id])
+    @course = Course.find(params[:id])
     # 新增 review 實體
     @review = Review.new()
     #代替 where，每個課程都有很多 reviews, lazy loading 不會印出來，沒用到不會印出來
-    @reviews = @course.reviews.order(id: :desc) #透過資料庫做反向排序
+    # 用 Review.all 會撈到所有課程的使用者，應該要針對某個課程撈留言的資料
+    # @reviews = Review.where(course_id: @course.id)
+    # 每一門課有很多 reviews
+    @reviews = @course.reviews.order(id: :desc)
   end
 
   def edit

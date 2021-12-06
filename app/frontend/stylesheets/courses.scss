@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.favorited{
+  background-color: pink;
+  color:white;
+}
+
 .field_with_errors{
   display: inline-block;
 
@@ -39,3 +44,4 @@ input[type="text"]{
   background-color:orange;
   color: white;
 }
+

@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # api
+
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: [] do
+        member do
+          # /api/v1/courses/2/like
+          post :like
+        end
+      end
+    end
+  end
 
   #課程和 review 評論
   resources :courses do

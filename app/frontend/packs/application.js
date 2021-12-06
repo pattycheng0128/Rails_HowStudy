@@ -6,12 +6,13 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+import "channels" //等於 import "channels/index.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// console.log("hi")
 import "stylesheets"
-// import "scripts"
+import "scripts"
+
+import "controllers"

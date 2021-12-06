@@ -1,8 +1,12 @@
 
-<h1> 
+<h1 data-controller="favorite">
   <%= @course.name %>
-  <button id="like_btn">Like!</button>
-</h1> 
+  <% if user_signed_in? && current_user.favorite_courses.include?(@course) %>
+    <button data-favorite-target="btn" data-action="click->favorite#like"  class= "favorited" data-id="<%= @course.id %>">❤</button>
+  <% else %>
+    <button data-favorite-target="btn" data-action="click->favorite#like" data-id="<%= @course.id %>">❤</button>
+  <% end %>
+</h1>
 
 <%# @course要帶入，不然不會知道是哪一門課程
 (@course =Course.find(params[:id])), remote:true(XHR,AJAX 非同步應用)，當 show controller 找不到相對應的網址時，會去找 views 下的 reviews 中的 js %>

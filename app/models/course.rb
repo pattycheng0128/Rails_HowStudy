@@ -7,6 +7,7 @@ class Course < ApplicationRecord
 
   has_many :reviews
   #透過 through 和 :favor_courses 建立關聯
+  has_many :favor_courses
   has_many :users, through: :favor_courses
 
 end
