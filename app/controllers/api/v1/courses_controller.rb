@@ -7,6 +7,7 @@ class Api::V1::CoursesController < ApplicationController
   #還沒寫，確認課程是你喜歡的，或不喜歡的
   def like
     course = Course.find(params[:id])
+    # render html: params
 
     favorited_course = FavorCourse.find_by(user: current_user, course: course)
     if favorited_course

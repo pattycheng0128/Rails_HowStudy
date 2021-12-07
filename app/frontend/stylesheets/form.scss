@@ -1,0 +1,7 @@
+.field_with_errors {
+  display: inline;
+
+  input[type="text"] {
+    border: solid 2px red;
+  }
+}

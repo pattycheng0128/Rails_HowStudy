@@ -1,47 +1,21 @@
-// Place all the styles related to the courses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
-.favorited{
-  background-color: pink;
-  color:white;
-}
-
-.field_with_errors{
-  display: inline-block;
-
-  input[type="text"]{
-      border-color: blue;
-  }
-  label{
-      color: pink;
-  }
-}
-
-input[type="text"]{
-  margin-bottom: 5px;
-}
-
-#course_list {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#course_list td, #course_list thead {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#course_list tr:nth-child(even){background-color: #f2f2f2;}
-
-#course_list tr:hover {background-color: #ddd;}
-
-#course_list thead {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color:orange;
+.favorited {
+  background-color: blue;
   color: white;
 }
 
+section.course {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .card {
+    padding: 8px 12px;
+    background-color: #eeeeee;
+    border-radius: 8px;
+    margin: 4px;
+
+    header {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

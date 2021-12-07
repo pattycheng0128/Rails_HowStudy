@@ -6,6 +6,7 @@ class Course < ApplicationRecord
   belongs_to :user #optional: true 使用者必須存在，不然會出現錯誤
 
   has_many :reviews
+  has_many :orders
   #透過 through 和 :favor_courses 建立關聯
   has_many :favor_courses
   has_many :users, through: :favor_courses

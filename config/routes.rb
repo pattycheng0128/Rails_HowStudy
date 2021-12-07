@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # api
 
+  root "courses#index"
+  
   namespace :api do
     namespace :v1 do
       resources :courses, only: [] do
@@ -15,7 +17,11 @@ Rails.application.routes.draw do
 
   #課程和 review 評論
   resources :courses do
+    member do
+      get :buy
+    end
     resources :reviews, only: [:create] # 建出 course_reviews_path, /courses/:course_id/reviews(.:format)
+    resources :orders, only: [:create]  # POST /courses/2/orders
   end
   resources :reviews, only: [:destroy] # 建出 review_path, courses#destroy, /reviews/:id(.:format)
 

@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+  private
   def clean_review_params
     # 沒加 merge，評論只會有一條，有加 merge，在做 create 時，就會確認目前 user
     params.require(:review)

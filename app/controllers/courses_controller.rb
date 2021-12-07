@@ -33,6 +33,7 @@ class CoursesController < ApplicationController
   def show
     # 找到課程，給 view 的 course_reviews_path 使用
     @course = Course.find(params[:id])
+    # render html: params
     # 新增 review 實體
     @review = Review.new()
     #代替 where，每個課程都有很多 reviews, lazy loading 不會印出來，沒用到不會印出來
@@ -63,6 +64,11 @@ class CoursesController < ApplicationController
       @course.destroy
     end
     redirect_to '/courses', notice:"課程已經被刪除!"
+  end
+
+  def buy
+    @course = Course.find(params[:id])
+    @order = Order.new
   end
 
   private
