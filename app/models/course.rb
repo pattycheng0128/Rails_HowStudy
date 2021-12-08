@@ -11,4 +11,12 @@ class Course < ApplicationRecord
   has_many :favor_courses
   has_many :users, through: :favor_courses
 
+  def prepare_order(params)
+    params = params.merge(amount: self.price, state: 'pending') #取代下面註解的兩行
+    order = orders.build(params)
+    # order.amount = self.price
+    # order.state = 'pending'
+    return order
+  end
+
 end

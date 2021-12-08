@@ -69,6 +69,17 @@ class CoursesController < ApplicationController
   def buy
     @course = Course.find(params[:id])
     @order = Order.new
+
+    #刷卡
+    gateway = Braintree::Gateway.new(
+      environment: :sandbox,
+      merchant_id: "snq96mkz2r2py4vm",
+      public_key: "4d9c98wws2qnyxvt",
+      private_key: "f6eb1b220f883e76c02f123c66050a80",
+    )
+    # 長出專屬的 token
+    @client_token = gateway.client_token.generate
+
   end
 
   private

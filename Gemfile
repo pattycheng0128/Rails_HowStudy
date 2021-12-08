@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb 開機時才會使用
 gem 'bootsnap', '>= 1.4.4', require: false # require: false 不要匯入進來
 gem 'aasm', '~> 5.2'
+gem 'braintree', '~> 4.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
